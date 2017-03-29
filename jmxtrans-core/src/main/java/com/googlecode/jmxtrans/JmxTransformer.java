@@ -401,13 +401,13 @@ public class JmxTransformer implements WatchedCallback {
 		if ((server.getCronExpression() != null) && CronExpression.isValidExpression(server.getCronExpression())) {
 			trigger = new CronTrigger();
 			((CronTrigger) trigger).setCronExpression(server.getCronExpression());
-			trigger.setName(server.getHost() + ":" + server.getPort() + "-" + Long.toString(System.currentTimeMillis()));
+			trigger.setName(server.getHost() + ":" + server.getPort() + "-" + Long.toString(System.currentTimeMillis()) + "-" + RandomStringUtils.randomNumeric(10));
 			trigger.setStartTime(computeSpreadStartDate(configuration.getRunPeriod()));
 		} else {
 			int runPeriod = configuration.getRunPeriod();
 			if (server.getRunPeriodSeconds() != null) runPeriod = server.getRunPeriodSeconds();
 			Trigger minuteTrigger = TriggerUtils.makeSecondlyTrigger(runPeriod);
-			minuteTrigger.setName(server.getHost() + ":" + server.getPort() + "-" + Long.toString(System.currentTimeMillis()));
+			minuteTrigger.setName(server.getHost() + ":" + server.getPort() + "-" + Long.toString(System.currentTimeMillis()) + "-" + RandomStringUtils.randomNumeric(10));
 			minuteTrigger.setStartTime(computeSpreadStartDate(runPeriod));
 
 			trigger = minuteTrigger;
