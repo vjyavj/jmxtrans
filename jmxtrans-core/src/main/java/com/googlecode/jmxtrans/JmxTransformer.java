@@ -139,7 +139,8 @@ public class JmxTransformer implements WatchedCallback {
 	}
 
 	/**
-	 * The real main method.
+
+* The real main method.
 	 */
 	private void doMain() throws Exception {
 		MBeanServer platformMBeanServer = ManagementFactory.getPlatformMBeanServer();
